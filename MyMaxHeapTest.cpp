@@ -19,7 +19,7 @@ class MyMaxHeapTest : public ::testing::Test {
   myMaxHeap<int> emptyHeap;
 };
 
-/** Tests for MaxHeap class.
+/** Tests for MaxHeap ADT.
  *
  * isEmpty()
  * getIndex()
@@ -32,13 +32,11 @@ class MyMaxHeapTest : public ::testing::Test {
  * remove()
  * increaseKey()
  * decreaseKey()
- * myMaxHeap()
  *
- * HeapOverlow Exception
  * HeapUnderflow Exception
  *
  * Each TEST_F tests a single function and its
- * corner case behaviours.
+ * behaviours on corner cases.
  */
 
 TEST_F(MyMaxHeapTest, ConstructAMaxHeap)
@@ -139,4 +137,15 @@ TEST_F(MyMaxHeapTest, Clear)
 
     emptyHeap.clear();
     ASSERT_EQ(0, emptyHeap.getNumberOfNodes());
+}
+
+TEST_F(MyMaxHeapTest, PeekTop)
+{
+    ASSERT_EQ(1738, filledHeap.peekTop()) << "Peek top should return the largest item.";
+
+    try
+    {
+        emptyHeap.peekTop();
+        FAIL() << "Peektop on empty heap should throw an exception";
+    } catch (...) {}
 }
