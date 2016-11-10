@@ -36,6 +36,9 @@ class MyMaxHeapTest : public ::testing::Test {
  *
  * HeapOverlow Exception
  * HeapUnderflow Exception
+ *
+ * Each TEST_F tests a single function and its
+ * corner case behaviours.
  */
 
 TEST_F(MyMaxHeapTest, ConstructAMaxHeap)
@@ -128,5 +131,12 @@ TEST_F(MyMaxHeapTest, Display)
     } catch (...) {}
 }
 
+TEST_F(MyMaxHeapTest, Clear)
+{
+    // Clear and check that num of nodes is 0
+    filledHeap.clear();
+    ASSERT_EQ(0, filledHeap.getNumberOfNodes());
 
-
+    emptyHeap.clear();
+    ASSERT_EQ(0, emptyHeap.getNumberOfNodes());
+}
