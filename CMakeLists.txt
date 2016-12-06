@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
-project(cse335_hw{})
+project(cse331_hw07)
 
 ################################
 # Code
@@ -36,8 +36,8 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 ################################
 # Add test(s) from cpp file(s)
 
-add_executable(RunMy{}Test "My{}Test.cpp")
+add_executable(RunMyHashTableTest "MyHashTableTest.cpp")
 # Link test executable against gtest & gtest_main
 
-target_link_libraries(RunMy{}Test gtest gtest_main)
-add_test(RunMy{}Test RunMy{}Test)
+target_link_libraries(RunMyHashTableTest gtest gtest_main)
+add_test(RunMyHashTableTest RunMyHashTableTest)
