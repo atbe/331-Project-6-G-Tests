@@ -18,6 +18,7 @@ struct Account
 class MyHashTableTest : public ::testing::Test {
     protected:
         HashTable<Account,int> accounts{11};    // List of accounts
+        HashTable<Account,int> emptyAccounts{11};    // List of accounts
 
 
         virtual void SetUp() {
@@ -41,17 +42,38 @@ class MyHashTableTest : public ::testing::Test {
       // virtual void TearDown() {}
 };
 
-/** Tests for {} class.
+/** Tests for HashTable class.
+ *
+ * Insert
+ * Remove
+ * Retrieve
+ * IsEmpty
  *
  */
 
 TEST_F(MyHashTableTest, ConstructHashTable)
 {
-    ASSERT_FALSE(accounts.isEmpty());
+    // The hashtable should not be empty (even though this may pass if your
+    // isEmpty function does not work correctly).
+    ASSERT_FALSE(accounts.isEmpty()) << "Hash table should not be empty.";
+    ASSERT_TRUE(emptyAccounts.isEmpty()) << "Blank hash table should be empty.";
 }
 
 TEST_F(MyHashTableTest, InsertItemIntoHashTable)
 {
-
+    Account acct{420, 42.42};
+    emptyAccounts.insert(acct);
+    ASSERT_FALSE(emptyAccounts.isEmpty()) << "Hash Table must not be empty if account has been inserted.";
 }
 
+TEST_F(MyHashTableTest, RetrieveItemFromHashTable)
+{
+    Account acct{420, 42.42};
+    emptyAccounts.insert(acct);
+
+    Account retrieveDest;
+    if(emptyAccounts.retrieve(acct.getKey(), retrieveDest))
+    {
+        ASSERT_TRUE(acct == retrieveDest) << "The acccount inserted must match the account we retrieve.";
+    }
+}
