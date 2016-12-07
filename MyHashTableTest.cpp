@@ -13,6 +13,7 @@ struct Account
 
     int getKey () const { return acctNum; }
     static unsigned int hash(const int& key) { return abs( key ); }
+    bool operator==(const Account &other) { return acctNum == other.acctNum && balance == other.balance; }
 };
 
 class MyHashTableTest : public ::testing::Test {
@@ -77,3 +78,4 @@ TEST_F(MyHashTableTest, RetrieveItemFromHashTable)
         ASSERT_TRUE(acct == retrieveDest) << "The acccount inserted must match the account we retrieve.";
     }
 }
+
