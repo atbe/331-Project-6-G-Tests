@@ -75,7 +75,18 @@ TEST_F(MyHashTableTest, RetrieveItemFromHashTable)
     Account retrieveDest;
     if(emptyAccounts.retrieve(acct.getKey(), retrieveDest))
     {
-        ASSERT_TRUE(acct == retrieveDest) << "The acccount inserted must match the account we retrieve.";
+        ASSERT_TRUE(acct == retrieveDest) << "The account inserted must match the account we retrieve.";
     }
+}
+
+TEST_F(MyHashTableTest, RemoveItemFromHashTable)
+{
+    Account acct{420, 42.42};
+    emptyAccounts.insert(acct);
+
+    ASSERT_TRUE(emptyAccounts.remove(acct.getKey())) << "Removing an item that is in the hash table should return true.";
+
+    Account sample;
+    ASSERT_FALSE(emptyAccounts.retrieve(acct.getKey(), sample)) << "Item that was removed should not be retrieved.";
 }
 
