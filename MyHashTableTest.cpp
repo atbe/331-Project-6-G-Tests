@@ -90,3 +90,8 @@ TEST_F(MyHashTableTest, RemoveItemFromHashTable)
     ASSERT_FALSE(emptyAccounts.retrieve(acct.getKey(), sample)) << "Item that was removed should not be retrieved.";
 }
 
+TEST_F(MyHashTableTest, ClearHashTable)
+{
+    accounts.clear();
+    ASSERT_TRUE(accounts.isEmpty()) << "Hash Table should be empty when cleared.";
+}
