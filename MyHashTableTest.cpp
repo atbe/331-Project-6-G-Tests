@@ -48,8 +48,7 @@ class MyHashTableTest : public ::testing::Test {
  * Insert
  * Remove
  * Retrieve
- * IsEmpty
- *
+ * Clear
  */
 
 TEST_F(MyHashTableTest, ConstructHashTable)
